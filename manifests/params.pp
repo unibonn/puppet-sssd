@@ -25,6 +25,7 @@ class sssd::params {
       $service_enable = true
 
       $sss_cache_path = [ '/usr/sbin/' ]
+      $service_provider = ''
     }
     'Debian': {
       case $::operatingsystem {
@@ -63,6 +64,14 @@ class sssd::params {
       $service_ensure = 'running'
       $service_enable = true
       $sss_cache_path = [ '/usr/sbin/' ]
+
+      if versioncmp($::operatingsystemrelease, '16.04') >= 0 {
+       $service_provider = 'systemd'
+      }
+      else
+      {
+       $service_provider = ''
+      }
     }
     default: {
       $unsupported = true

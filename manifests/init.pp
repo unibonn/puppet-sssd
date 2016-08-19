@@ -22,6 +22,7 @@ class sssd (
     $service_name = $sssd::params::service_name,
     $service_ensure = $sssd::params::service_ensure,
     $service_enable = $sssd::params::service_enable,
+    $service_provider = $sssd::params::service_provider,
 
     $services = $sssd::params::services,
     $domains = $sssd::params::domains,
